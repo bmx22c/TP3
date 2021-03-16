@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Blog | {{ user.username }}{% endblock %}
+
+{% block body %}
+    <div class="container mt-4">
+        <h1>{{ user.username }}</h1>
+        {% if user.posts|length <= 1 %}
+            <span>{{ user.posts|length }} article</span>
+        {% else %}
+            <span>{{ user.posts|length }} articles</span>
+        {% endif %}
+        <br>
+        {% if user.comments|length <= 1 %}
+            <span>{{ user.comments|length }} commentaire</span>
+        {% else %}
+            <span>{{ user.comments|length }} commentaires</span>
+        {% endif %}
+        {#        {{ dump(post) }}#}
+    </div>
+{% endblock %}

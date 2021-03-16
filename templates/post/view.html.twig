@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Post{% endblock %}
+
+{% block body %}
+    <div class="container mt-4">
+    {% if post == null %}
+        <p>Post non trouvé</p>
+    {% else %}
+        <p>{{ post.content }}</p>
+        <small>créé par <a href="/user/view/{{ post.author.id }}">{{ post.author }}</a> le {{ post.createdAt|date("d/m/Y") }} à {{ post.createdAt|date("h:i:s") }}</small>
+        <hr>
+        {% if post.comment|length == 0 %}
+            <i>Soyez le premier à commenter</i>
+        {% else %}
+            {% for comment in post.comment %}
+                <div class="row mb-4">
+                    <div class="col">
+                        <small title="{{ comment.createdAt|date("d/m/Y h:i:s") }}"><a href="/user/view/{{ comment.author.id }}">{{ comment.author.username }}</a> le {{ comment.createdAt|date("d/m/Y") }}</small>
+                        <p>{{ comment.content }}</p>
+                    </div>
+                </div>
+                {#            {{ dump(comment) }}#}
+            {% endfor %}
+        {% endif %}
+    {% endif %}
+    </div>
+{% endblock %}

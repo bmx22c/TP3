@@ -24,9 +24,12 @@ class PostController extends AbstractController
     #[Route('/post/view/{id}', name: 'post_view')]
     public function view(int $id): Response
     {
+        $em = $this->getDoctrine()->getManager();
+        $rep = $em->getRepository(Post::class);
+        $post = $rep->find($id);
 
         return $this->render('post/view.html.twig', [
-            'post' => $id
+            'post' => $post
         ]);
     }
 
