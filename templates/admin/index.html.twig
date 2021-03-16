@@ -1,0 +1,16 @@
+{#{% extends 'base.html.twig' %}#}
+{% extends '@!EasyAdmin/layout.html.twig' %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block body %}
+
+    <div class="example-wrapper">
+        <h1>Dashboard</h1>
+
+        <ul>
+            <li><a href="/admin/user">User</a></li>
+            <li>Your template at <code><a href="{{ '/home/bmx22c/TP3/symfony_tp/templates/post/index.html.twig'|file_link(0) }}">templates/post/index.html.twig</a></code></li>
+        </ul>
+    </div>
+{% endblock %}
